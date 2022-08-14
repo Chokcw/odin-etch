@@ -65,32 +65,32 @@ function fillGrid (e) {
             e.target.classList.add('filled');
         }
         else {
-            e.target.classList.add('empty');
+            e.target.classList.remove('filled');
         }
     }
 }
 
-const rows = document.querySelectorAll(".row"); // make selection more specific
-console.log(rows.length); // debug querySelector
-rows_array = Array.from(rows)
-for (const grid of rows_array) {
+const grids = document.querySelectorAll(".grid"); 
+console.log(grids.length); // debug querySelector
+grids_array = Array.from(grids)
+for (const grid of grids_array) {
     grid.addEventListener('mousedown', downListener);
     grid.addEventListener('mousemove', fillGrid);
     grid.addEventListener('mouseup', upListener);
 }
 
-// function clearAll() {
-//     clear = confirm("Confirm to clear board?");
-//     console.log(clear);
-//     if (clear) {
-//         for (const grid of rows_array) {
+function clearAll() {
+    clear = confirm("Confirm to clear board?");
+    console.log(clear);
+    if (clear) {
+        for (const grid of grids_array) {
+            grid.classList.remove('filled');
+        }
+    }
+}
 
-//         }
-//     }
-// }
-
-// const clearAllButton = document.querySelector("#clearAll-button");
-// clearAllButton.addEventListener('click', clearAll);
+const clearAllButton = document.querySelector("#clearAll-button");
+clearAllButton.addEventListener('click', clearAll);
 
 
 // clear colours
